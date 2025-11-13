@@ -10,7 +10,7 @@
     let backgroundMode: 'webgl' | 'video' | 'static' = 'static';
     let staticColor = '#d9d9d9';
     let fpsCap = 30;
-    const defaultVideoURL = '/assets/background-sample.mp4';
+    const defaultVideoURL = 'https://files.catbox.moe/b2ikp8.mp4';
 
     let initialized = false; // prevents saving during load
 
