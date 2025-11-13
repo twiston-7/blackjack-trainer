@@ -43,7 +43,7 @@
             bg = createWebGLBackground({
                 canvas,
                 fpsCap: settings.fpsCap ?? 30,
-                randomColor: settings.backgroundMode === 'webgl' && !settings.staticColor
+                randomColor: settings.backgroundMode === 'webgl'
             });
             bg.init();
         } else if (settings.backgroundMode === 'video') {
