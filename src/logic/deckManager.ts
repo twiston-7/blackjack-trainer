@@ -13,6 +13,14 @@ export function createDeck(): Card[] {
     return deck;
 }
 
+export function createMultipleDecks(deckCount: number = 1): Card[] {
+    const decks: Card[] = [];
+    for (let i = 0; i < deckCount; i++) {
+        decks.push(...createDeck());
+    }
+    return decks;
+}
+
 export function shuffleDeck(deck: Card[]): Card[] {
     const shuffled = [...deck];
     for (let i = shuffled.length - 1; i > 0; i--) {
@@ -37,4 +45,13 @@ export function getCardValue(rank: Rank): number {
 export function normalizeRank(rank: Rank): string {
     if (['10', 'J', 'Q', 'K'].includes(rank)) return '10';
     return rank;
+}
+
+export function getDeckCountFromSettings(): number {
+    const saved = localStorage.getItem('userSettings');
+    if (saved) {
+        const parsed = JSON.parse(saved);
+        return parsed.deckCount ?? 6; // default to 6 decks
+    }
+    return 6;
 }

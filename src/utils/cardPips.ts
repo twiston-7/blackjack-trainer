@@ -27,21 +27,19 @@ export function getPipSizeForSuit(suit: Suit, rank: Rank): string {
         }
     }
 
-    // Special smaller sizing for 10s to prevent overlap
     if (rank === '10') {
         switch (suit) {
             case '♠':
             case '♣':
-                return '2.8em';  // Reduced from 3.2em
+                return '2.8em';
             case '♥':
             case '♦':
-                return '3.2em';  // Reduced from 3.7em
+                return '3.2em';
             default:
                 return '3.0em';
         }
     }
 
-    // Normal sizing for other cards
     switch (suit) {
         case '♠':
         case '♣':
@@ -122,16 +120,16 @@ export function calculatePipPositions(count: number): PipPosition[] {
             pips.push({ top: 85, left: 70, rotate: 180 });
             break;
         case 10:
-            // Maximum vertical and horizontal spread to prevent overlap
-            pips.push({ top: 13, left: 30 });           // Top corners - pushed to edges (was 28)
-            pips.push({ top: 13, left: 70 });           // (was 72)
-            pips.push({ top: 28, left: 50 });           // Top center pip
-            pips.push({ top: 38, left: 30 });           // Middle top - spread wider (was 43)
+
+            pips.push({ top: 13, left: 30 });
+            pips.push({ top: 13, left: 70 });
+            pips.push({ top: 28, left: 50 });
+            pips.push({ top: 38, left: 30 });
             pips.push({ top: 38, left: 70 });
-            pips.push({ top: 62, left: 30, rotate: 180 });  // Middle bottom - spread wider (was 57)
+            pips.push({ top: 62, left: 30, rotate: 180 });
             pips.push({ top: 62, left: 70, rotate: 180 });
-            pips.push({ top: 72, left: 50, rotate: 180 });  // Bottom center pip
-            pips.push({ top: 87, left: 30, rotate: 180 });  // Bottom corners - pushed to edges
+            pips.push({ top: 72, left: 50, rotate: 180 });
+            pips.push({ top: 87, left: 30, rotate: 180 });
             pips.push({ top: 87, left: 70, rotate: 180 });
             break;
     }

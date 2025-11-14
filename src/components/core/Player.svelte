@@ -1,18 +1,19 @@
 <script lang="ts">
     import Hand from './Hand.svelte';
-    import { gameState } from '../stores/gameState';
+    import { gameState } from '../../stores/gameState';
 </script>
 
-<div class="dealer">
-    <h2>Dealer</h2>
-    <Hand cards={$gameState.dealerHand} total={$gameState.dealerTotal} />
+<div class="player">
+    <h2>Your Hand</h2>
+    <Hand cards={$gameState.playerHand} total={$gameState.playerTotal} />
 </div>
 
 <style>
-    .dealer {
-        background: rgba(255, 255, 255, 0.05);
+    .player {
+        background: rgba(0, 0, 0, 0.2);
         padding: 2vh 2vw;
         border-radius: 12px;
+        backdrop-filter: blur(5px);
         position: relative;
     }
 

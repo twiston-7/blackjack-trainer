@@ -1,6 +1,6 @@
 <script lang="ts">
     import Card from './Card.svelte';
-    import type { Card as CardType } from '../types';
+    import type { Card as CardType } from '../../types';
 
     export let cards: CardType[] = [];
     export let showTotal: boolean = true;

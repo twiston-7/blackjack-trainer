@@ -1,9 +1,10 @@
 <script lang="ts">
-    import { gameState, updateFeedback, incrementCorrectMoves, incrementTotalMoves } from '../stores/gameState';
-    import { getCorrectAction } from '../logic/strategyChecker';
-    import type { Action } from '../types';
-    import type { RuleVariant } from '../strategy';
-    import { canDouble, canSplit } from '../logic/gameRules';
+    import { gameState, updateFeedback, incrementCorrectMoves, incrementTotalMoves } from '../../stores/gameState';
+    import { getCorrectAction } from '../../logic/strategyChecker';
+    import type { Action } from '../../types';
+    import type { RuleVariant } from '../../strategy';
+    import { canDouble, canSplit, calculateHandValue } from '../../logic/gameRules';
+    import { settings } from '../../stores/settingsStore';
 
     export let selectedVariant: RuleVariant;
     export let startNewRound: () => void;
@@ -30,8 +31,56 @@
         }, 1800);
     }
 
-    $: doubleEnabled = $gameState.gameStatus === 'playing' && canDouble($gameState.playerHand);
-    $: splitEnabled = $gameState.gameStatus === 'playing' && canSplit($gameState.playerHand);
+    // Check if double is allowed based on settings
+    function isDoubleAllowed(): boolean {
+        const playerTotal = calculateHandValue($gameState.playerHand);
+
+        switch ($settings.doubleRules) {
+            case '10-11':
+                return playerTotal === 10 || playerTotal === 11;
+            case '9-10-11':
+                return playerTotal === 9 || playerTotal === 10 || playerTotal === 11;
+            case 'any2':
+            default:
+                return true;
+        }
+    }
+
+    // Check if surrender is allowed (only on initial 2 cards)
+    function isSurrenderAllowed(): boolean {
+        if ($settings.surrender === 'none') return false;
+        if ($gameState.playerHand.length !== 2) return false;
+
+        // Early surrender: can surrender before dealer checks for blackjack
+        if ($settings.surrender === 'early') {
+            return true;
+        }
+
+        // Late surrender: can only surrender after dealer checks for blackjack
+        // If dealer peeks and has blackjack, late surrender is not available
+        if ($settings.surrender === 'late') {
+            if ($settings.dealerPeeks) {
+                // Dealer already peeked, if they have blackjack the game would be over
+                // So if we're still playing, dealer doesn't have blackjack
+                return true;
+            } else {
+                // Without peek, player must risk dealer having blackjack
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    $: doubleEnabled = $gameState.gameStatus === 'playing' &&
+        canDouble($gameState.playerHand) &&
+        isDoubleAllowed();
+
+    $: splitEnabled = $gameState.gameStatus === 'playing' &&
+        canSplit($gameState.playerHand);
+
+    $: surrenderEnabled = $gameState.gameStatus === 'playing' &&
+        isSurrenderAllowed();
 </script>
 
 <div class="controls">
@@ -39,6 +88,9 @@
     <button on:click={() => handleAction('stand')} disabled={$gameState.gameStatus !== 'playing'}>Stand</button>
     <button on:click={() => handleAction('double')} disabled={!doubleEnabled}>Double</button>
     <button on:click={() => handleAction('split')} disabled={!splitEnabled}>Split</button>
+    {#if $settings.surrender !== 'none'}
+        <button on:click={() => handleAction('surrender')} disabled={!surrenderEnabled}>Surrender</button>
+    {/if}
     <button on:click={startNewRound} class="new-game">Skip</button>
 </div>
 

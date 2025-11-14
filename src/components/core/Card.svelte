@@ -1,6 +1,6 @@
 <script lang="ts">
-    import type { Suit, Rank } from '../types';
-    import { getPipCount, calculatePipPositions, getPipSizeForSuit } from '../utils/cardPips';
+    import type { Suit, Rank } from '../../types';
+    import { getPipCount, calculatePipPositions, getPipSizeForSuit } from '../../utils/cardPips';
 
     export let suit: Suit = '♠';
     export let rank: Rank = 'A';
@@ -23,7 +23,7 @@
 
             {#if isFaceCard}
                 <div class="face-card">
-                    <img src={`/cards/${rank.toLowerCase()}.png`} alt={`${rank} of ${suit}`} />
+                    <img src={`${import.meta.env.BASE_URL}cards/${rank.toLowerCase()}.png`} alt={`${rank} of ${suit}`} />
                 </div>
             {:else}
                 <div class="pips">
@@ -50,7 +50,7 @@
 
 <style>
     .card {
-        width: clamp(135px, 15vw, 195px);
+        width: clamp(125px, 14vw, 181px);
         aspect-ratio: 5 / 7;
         border: 1px solid #ccc;
         border-radius: 6px;

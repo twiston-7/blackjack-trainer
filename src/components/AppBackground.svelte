@@ -14,9 +14,13 @@
     };
 
     function loadSettings() {
-        const saved = localStorage.getItem('userSettings');
+        const saved = localStorage.getItem('blackjack-settings');
         if (saved) {
-            settings = JSON.parse(saved);
+            const parsed = JSON.parse(saved);
+            settings.backgroundMode = parsed.backgroundMode ?? settings.backgroundMode;
+            settings.staticColor = parsed.staticColor ?? settings.staticColor;
+            settings.videoURL = parsed.videoURL ?? settings.videoURL;
+            settings.fpsCap = parsed.fpsCap ?? settings.fpsCap;
         } else {
             settings.backgroundMode = canUseWebGL() ? 'webgl' : 'video';
         }

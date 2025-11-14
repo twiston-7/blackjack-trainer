@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 import type { GameState, FeedbackType } from '../types';
-import { createDeck, shuffleDeck } from '../logic/deckManager';
+import { createMultipleDecks, shuffleDeck, getDeckCountFromSettings } from '../logic/deckManager';
 
 const initialState: GameState = {
     dealerHand: [],
@@ -18,7 +18,8 @@ const initialState: GameState = {
 export const gameState = writable<GameState>(initialState);
 
 export function resetGame(): void {
-    const deck = shuffleDeck(createDeck());
+    const deckCount = getDeckCountFromSettings();
+    const deck = shuffleDeck(createMultipleDecks(deckCount));
     gameState.update(state => ({
         ...initialState,
         deck,

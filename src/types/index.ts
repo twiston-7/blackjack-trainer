@@ -40,3 +40,36 @@ export interface StrategyMatrix {
     soft: { [key: number]: { [key: string]: Action } };
     pairs: { [key: string]: { [key: string]: Action } };
 }
+
+export interface EngineSettings {
+    numDecks: number;
+    dealerSoft17: 'stand' | 'hit';
+    doubleRules: 'any2' | '9-10-11' | '10-11';
+    surrender: 'none' | 'early' | 'late';
+    doubleAfterSplit: boolean;
+    dealerPeeks: boolean;
+}
+
+export interface HandState {
+    playerHand: Card[];
+    dealerUpcard: Card;
+    canDouble: boolean;
+    canSplit: boolean;
+    canSurrender: boolean;
+}
+
+export interface ExpectedValue {
+    hit: number;
+    stand: number;
+    double: number;
+    split: number;
+    surrender: number;
+}
+
+export type OptimalAction = Action | 'surrender';
+
+export interface StrategyResult {
+    action: OptimalAction;
+    expectedValue: number;
+    allEVs: ExpectedValue;
+}
