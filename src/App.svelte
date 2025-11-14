@@ -1,10 +1,10 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import Dealer from './components/Dealer.svelte';
-    import Player from './components/Player.svelte';
-    import Controls from './components/Controls.svelte';
+    import Dealer from './components/core/Dealer.svelte';
+    import Player from './components/core/Player.svelte';
+    import Controls from './components/core/Controls.svelte';
     import FeedbackMessage from './components/FeedbackMessage.svelte';
-    import SettingsModal from './components/SettingsModal.svelte';
+    import SettingsModal from './components/settings/SettingsModal.svelte';
     import AppBackground from './components/AppBackground.svelte';
     import { gameState, resetGame } from './stores/gameState';
     import { dealCard } from './logic/deckManager';
