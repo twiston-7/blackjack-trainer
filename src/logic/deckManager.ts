@@ -35,7 +35,6 @@ export function getCardValue(rank: Rank): number {
 }
 
 export function normalizeRank(rank: Rank): string {
-    // Normalize face cards to '10' for pair checking
     if (['10', 'J', 'Q', 'K'].includes(rank)) return '10';
     return rank;
 }

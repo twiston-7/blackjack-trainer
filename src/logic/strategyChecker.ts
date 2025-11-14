@@ -15,7 +15,6 @@ export function getCorrectAction(
     let key: string;
 
     if (handType === 'pair') {
-        // For pairs, use the rank (e.g., "A,A" or "8,8")
         const rank = normalizeRank(playerHand[0].rank);
         key = `${rank},${rank}`;
 

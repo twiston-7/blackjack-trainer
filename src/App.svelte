@@ -9,7 +9,7 @@
     import { gameState, resetGame } from './stores/gameState';
     import { dealCard } from './logic/deckManager';
     import { calculateHandValue } from './logic/gameRules';
-    import type {Card, Rank, Suit} from './types/index.ts'
+    import type {Card, Rank, Suit} from './types'
     import type { RuleVariant } from './strategy';
 
     let selectedVariant: RuleVariant = 's17';

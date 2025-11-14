@@ -219,5 +219,5 @@ export function createWebGLBackground({ canvas, fpsCap = 30, randomColor = true 
 
     window.addEventListener('resize', handleResize);
 
-    return { init, destroy, setFPSCap(fps: number) { fpsCap = fps; frameInterval = 1000 / fps; } };
+    return { init, destroy };
 }

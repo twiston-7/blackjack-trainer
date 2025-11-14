@@ -1,4 +1,4 @@
-import type { Card, Rank } from '../types';
+import type { Card } from '../types';
 import { getCardValue, normalizeRank } from './deckManager';
 
 export function calculateHandValue(cards: Card[]): number {
@@ -18,13 +18,6 @@ export function calculateHandValue(cards: Card[]): number {
     }
 
     return total;
-}
-
-export function isBlackjack(cards: Card[]): boolean {
-    if (cards.length !== 2) return false;
-    const hasAce = cards.some(card => card.rank === 'A');
-    const hasTen = cards.some(card => ['10', 'J', 'Q', 'K'].includes(card.rank));
-    return hasAce && hasTen;
 }
 
 export function isSoft(cards: Card[]): boolean {
