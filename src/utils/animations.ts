@@ -14,7 +14,3 @@ export const cardFlip: AnimationConfig = {
     duration: 400,
     easing: 'ease-in-out'
 };
-
-export const feedbackFade: AnimationConfig = {
-    duration: 500
-};

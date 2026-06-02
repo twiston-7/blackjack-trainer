@@ -39,6 +39,6 @@
         font-size: clamp(1rem, 2.2vh, 1.5rem);
         font-weight: bold;
         color: white;
-        text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        text-shadow: 0.0625rem 0.0625rem 0.1875rem rgba(0,0,0,0.8);
     }
 </style>

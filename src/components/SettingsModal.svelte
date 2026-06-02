@@ -7,24 +7,26 @@
 
     const dispatch = createEventDispatcher();
 
-    let backgroundMode: 'webgl' | 'video' | 'static' = 'static';
+    let backgroundMode: 'webgl' | 'static' = 'static';
     let staticColor = '#d9d9d9';
     let fpsCap = 30;
-    const defaultVideoURL = 'https://files.catbox.moe/b2ikp8.mp4';
 
     let initialized = false; // prevents saving during load
 
-    function canUseWebGL(): boolean {
-        try {
-            const canvas = document.createElement('canvas');
-            return !!(canvas.getContext('webgl') || canvas.getContext('experimental-webgl'));
-        } catch {
-            return false;
-        }
-    }
+    const rulesSelectId = 'blackjack-rules-select';
+    const backgroundModeSelectId = 'background-mode-select';
+    const staticColorId = 'background-color-input';
+    const fpsCapId = 'fps-cap-input';
 
     function closeModal() {
         isOpen = false;
+    }
+
+    function handleBackdropKeydown(event: KeyboardEvent) {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            closeModal();
+        }
     }
 
     function saveSettings() {
@@ -33,8 +35,7 @@
             backgroundMode,
             staticColor,
             fpsCap,
-            rules: selectedVariant,
-            videoURL: defaultVideoURL
+            rules: selectedVariant
         };
         localStorage.setItem('userSettings', JSON.stringify(settings));
         dispatch('userSettingsUpdated', settings);
@@ -45,12 +46,12 @@
         const saved = localStorage.getItem('userSettings');
         if (saved) {
             const parsed = JSON.parse(saved);
-            backgroundMode = parsed.backgroundMode ?? backgroundMode;
+            backgroundMode = parsed.backgroundMode === 'webgl' ? 'webgl' : 'static';
             staticColor = parsed.staticColor ?? staticColor;
             fpsCap = parsed.fpsCap ?? fpsCap;
             selectedVariant = parsed.rules ?? selectedVariant;
         } else {
-            backgroundMode = canUseWebGL() ? 'webgl' : 'video';
+            backgroundMode = 'static';
         }
         initialized = true;
     }
@@ -64,45 +65,51 @@
 </script>
 
 {#if isOpen}
-    <div class="modal-backdrop" on:click={(e) => e.target === e.currentTarget && closeModal()}>
+    <div
+        class="modal-backdrop"
+        role="button"
+        tabindex="0"
+        aria-label="Close settings dialog"
+        on:click={(e) => e.target === e.currentTarget && closeModal()}
+        on:keydown={handleBackdropKeydown}
+    >
         <div class="modal">
             <div class="modal-header">
                 <h2>Settings</h2>
-                <button class="close-btn" on:click={closeModal}>&times;</button>
+                <button type="button" class="close-btn" on:click={closeModal}>&times;</button>
             </div>
 
             <div class="modal-body">
                 <div class="setting-group">
-                    <label>Blackjack Rules:</label>
-                    <select bind:value={selectedVariant} on:change={onChange}>
+                    <label for={rulesSelectId}>Blackjack Rules:</label>
+                    <select id={rulesSelectId} bind:value={selectedVariant} on:change={onChange}>
                         <option value="s17">S17 - Dealer Stands on Soft 17</option>
                         <option value="h17">H17 - Dealer Hits on Soft 17</option>
                         <option value="enhc">ENHC - European No Hole Card</option>
                     </select>
                 </div>
 
-                <hr style="margin: 1rem 0; border: none; border-top: 1px solid #ccc;" />
+                <hr style="margin: 1rem 0; border: none; border-top: 0.0625rem solid #ccc;" />
 
                 <div class="setting-group">
-                    <label>Background Mode:</label>
-                    <select bind:value={backgroundMode} on:change={onChange}>
+                    <label for={backgroundModeSelectId}>Background Mode:</label>
+                    <select id={backgroundModeSelectId} bind:value={backgroundMode} on:change={onChange}>
                         <option value="webgl">Dynamic (WebGL)</option>
-                        <option value="video">Video</option>
                         <option value="static">Static Color</option>
                     </select>
                 </div>
 
                 {#if backgroundMode === 'static'}
                     <div class="setting-group">
-                        <label>Background Color:</label>
-                        <input type="color" bind:value={staticColor} on:input={onChange} />
+                        <label for={staticColorId}>Background Color:</label>
+                        <input id={staticColorId} type="color" bind:value={staticColor} on:input={onChange} />
                     </div>
                 {/if}
 
                 {#if backgroundMode === 'webgl'}
                     <div class="setting-group">
-                        <label>Max Frame Rate (FPS):</label>
-                        <input type="number" min="1" max="120" bind:value={fpsCap} on:input={onChange} />
+                        <label for={fpsCapId}>Max Frame Rate (FPS):</label>
+                        <input id={fpsCapId} type="number" min="1" max="120" bind:value={fpsCap} on:input={onChange} />
                     </div>
                 {/if}
             </div>
@@ -126,10 +133,10 @@
 
     .modal {
         background: #f0f0f0; /* light gray */
-        border-radius: 12px;
+        border-radius: 0.75rem;
         width: 90%;
-        max-width: 500px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        max-width: 31.25rem;
+        box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3);
     }
 
     .modal-header {
@@ -137,7 +144,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 1.5rem;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 0.0625rem solid #ccc;
     }
 
     .modal-body {
@@ -159,8 +166,8 @@
         width: 100%;
         padding: 0.75rem;
         font-size: 1rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
+        border: 0.0625rem solid #ccc;
+        border-radius: 0.25rem;
         background: white;
     }
 

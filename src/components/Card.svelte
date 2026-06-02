@@ -50,23 +50,23 @@
 
 <style>
     .card {
-        width: clamp(135px, 15vw, 195px);
+        width: clamp(8.4375rem, 15vw, 12.1875rem);
         aspect-ratio: 5 / 7;
-        border: 1px solid #ccc;
-        border-radius: 6px;
+        border: 0.0625rem solid #ccc;
+        border-radius: 0.375rem;
         background: white;
         display: inline-block;
         margin: 0 0.6vw;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.15);
         transition: transform 0.3s ease;
         flex-shrink: 0;
         position: relative;
-        font-size: clamp(13.5px, 1.5vw, 19.5px);
+        font-size: clamp(0.84375rem, 1.5vw, 1.21875rem);
     }
 
     .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        transform: translateY(-0.3125rem);
+        box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.25);
     }
 
     .card-content {
@@ -159,7 +159,7 @@
     .card-back {
         height: 100%;
         background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
-        border-radius: 5px;
+        border-radius: 0.3125rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -172,7 +172,7 @@
         position: absolute;
         width: 80%;
         height: 85%;
-        border: 3px solid rgba(255,255,255,0.3);
-        border-radius: 4px;
+        border: 0.1875rem solid rgba(255,255,255,0.3);
+        border-radius: 0.25rem;
     }
 </style>

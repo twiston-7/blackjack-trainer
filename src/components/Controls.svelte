@@ -58,21 +58,21 @@
         padding: 1.8vh 2.8vw;
         font-size: clamp(0.95rem, 1.9vh, 1.25rem);
         border: none;
-        border-radius: 8px;
+        border-radius: 0.5rem;
         background: #4CAF50;
         color: white;
         cursor: pointer;
         transition: all 0.3s ease;
         font-weight: bold;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        min-width: clamp(75px, 11vw, 110px);
+        box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.3);
+        min-width: clamp(4.6875rem, 11vw, 6.875rem);
         flex-shrink: 0;
     }
 
     button:hover:not(:disabled) {
         background: #45a049;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+        transform: translateY(-0.125rem);
+        box-shadow: 0 0.375rem 0.75rem rgba(0,0,0,0.4);
     }
 
     button:active:not(:disabled) {
@@ -93,13 +93,13 @@
         background: #0b7dda;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 56.25rem) {
         .controls {
             gap: 1vw;
         }
 
         button {
-            min-width: clamp(65px, 10vw, 95px);
+            min-width: clamp(4.0625rem, 10vw, 5.9375rem);
             padding: 1.5vh 2.2vw;
             font-size: clamp(0.85rem, 1.7vh, 1.1rem);
         }

@@ -32,11 +32,11 @@
         left: 50%;
         transform: translate(-50%, -50%);
         padding: 1.2vh 2.5vw;
-        border-radius: 8px;
+        border-radius: 0.5rem;
         font-size: clamp(1rem, 2.2vh, 1.4rem);
         font-weight: bold;
         white-space: nowrap;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.4);
         z-index: 10;
     }
 
