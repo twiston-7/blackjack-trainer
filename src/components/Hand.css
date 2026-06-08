@@ -1,0 +1,21 @@
+.hand {
+    position: relative;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: clamp(0.25rem, 0.8vw, 0.65rem);
+    margin-bottom: clamp(0.25rem, 0.6vh, 0.5rem);
+    flex-wrap: wrap;
+}
+
+.total {
+    position: absolute;
+    bottom: 0.2rem;
+    right: 0.2rem;
+    font-size: clamp(0.82rem, 1.55vh, 1.1rem);
+    font-weight: bold;
+    color: white;
+    text-shadow: 0.0625rem 0.0625rem 0.1875rem rgba(0, 0, 0, 0.8);
+}

@@ -1,4 +1,4 @@
-import type { Card } from '../types';
+import type { Card } from '../../types';
 import { getCardValue, normalizeRank } from './deckManager';
 
 export function calculateHandValue(cards: Card[]): number {
@@ -11,7 +11,6 @@ export function calculateHandValue(cards: Card[]): number {
         if (card.rank === 'A') aces++;
     }
 
-    // Adjust for aces
     while (total > 21 && aces > 0) {
         total -= 10;
         aces--;
@@ -30,7 +29,6 @@ export function isSoft(cards: Card[]): boolean {
         if (card.rank === 'A') hasAce = true;
     }
 
-    // A hand is soft if it has an Ace counted as 11 without busting
     return hasAce && total <= 21;
 }
 
@@ -58,7 +56,6 @@ export function getHandType(cards: Card[]): 'pair' | 'soft' | 'hard' {
 }
 
 export function getDealerUpcardValue(card: Card): string {
-    // Convert dealer upcard to strategy matrix key
     if (['J', 'Q', 'K'].includes(card.rank)) return '10';
     return card.rank;
 }

@@ -1,7 +1,7 @@
-import type { Card, Action } from '../types';
-import { getStrategy, type RuleVariant } from '../strategy';
-import { getHandType, getDealerUpcardValue, calculateHandValue } from './gameRules';
+import type { Action, Card } from '../../types';
+import { getStrategy, type RuleVariant } from '../../strategy';
 import { normalizeRank } from './deckManager';
+import { calculateHandValue, getDealerUpcardValue, getHandType } from './gameRules';
 
 export function getCorrectAction(
     playerHand: Card[],
@@ -24,7 +24,6 @@ export function getCorrectAction(
     }
 
     if (handType === 'soft') {
-        // For soft hands, use the total (e.g., "18" for A-7)
         const total = calculateHandValue(playerHand).toString();
 
         if (strategy.soft[total] && strategy.soft[total][dealerValue]) {
@@ -32,14 +31,12 @@ export function getCorrectAction(
         }
     }
 
-    // For hard hands or fallback
     const total = calculateHandValue(playerHand).toString();
 
     if (strategy.hard[total] && strategy.hard[total][dealerValue]) {
         return strategy.hard[total][dealerValue];
     }
 
-    // Default fallback
     const numTotal = calculateHandValue(playerHand);
     return numTotal >= 17 ? 'stand' : 'hit';
 }

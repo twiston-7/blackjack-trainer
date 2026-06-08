@@ -1,0 +1,21 @@
+.hand-panel {
+    background: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 87.5rem;
+    padding: clamp(0.45rem, 1.2vh, 1rem) clamp(0rem, 1.5vw, 1rem);
+    border-radius: 0.75rem;
+    backdrop-filter: blur(0.3125rem);
+    position: relative;
+}
+
+.hand-panel.dealer {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.hand-panel h2 {
+    margin: 0 0 1.5vh 0;
+    font-size: clamp(1.2rem, 2.5vh, 1.8rem);
+    color: white;
+    text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.5);
+    text-align: center;
+}

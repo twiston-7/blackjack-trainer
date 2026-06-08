@@ -1,4 +1,4 @@
-import type { Card, Suit, Rank } from '../types';
+import type { Card, Rank, Suit } from '../../types';
 
 const suits: Suit[] = ['♠', '♥', '♦', '♣'];
 const ranks: Rank[] = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];

@@ -1,9 +1,8 @@
 import './app.css'
-import App from './App.svelte'
-import { mount } from 'svelte'
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App'
 
-const app = mount(App, {
-    target: document.getElementById('app')!,
-})
-
-export default app
+createRoot(document.getElementById('app')!).render(
+    React.createElement(React.StrictMode, null, React.createElement(App))
+)
