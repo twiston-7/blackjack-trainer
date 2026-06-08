@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
@@ -14,12 +15,21 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
-    "jsx": "react-jsx"
-  },
-  "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.tsx", "src/**/*.js"],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
+    "jsx": "react-jsx",
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@core/*": ["./src/blackjack/core/*"],
+      "@app-types/*": ["./src/types/*"],
+      "@util/*": ["./src/util/*"],
+      "@strategy": ["./src/strategy/index.ts"],
+      "@strategy/*": ["./src/strategy/*"],
+      "@logic/*": ["./src/logic/*"],
+      "@stores/*": ["./src/stores/*"],
+      "@background/*": ["./src/components/background/*"],
+      "@feedback/*": ["./src/components/feedback/*"],
+      "@game/*": ["./src/components/game/*"],
+      "@settings/*": ["./src/components/settings/*"]
     }
-  ]
+  },
+  "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.tsx", "src/**/*.js"]
 }

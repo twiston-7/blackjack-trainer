@@ -1,0 +1,1 @@
+export type HandType = 'hard' | 'soft' | 'pair';

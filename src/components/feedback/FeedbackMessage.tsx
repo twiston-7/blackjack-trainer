@@ -1,5 +1,5 @@
-import { useGameState } from '../stores/gameState';
-import './FeedbackMessage.css';
+import { useGameState } from '@stores/gameState';
+import '@feedback/FeedbackMessage.css';
 
 export default function FeedbackMessage() {
     const state = useGameState();

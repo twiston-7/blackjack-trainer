@@ -1,10 +1,10 @@
-import type { Card as CardType } from '../types';
-import Hand from './Hand';
-import './HandPanel.css';
+import type { Card } from '@app-types/CardType';
+import Hand from '@game/Hand';
+import '@game/HandPanel.css';
 
 interface HandPanelProps {
     title: string;
-    cards?: CardType[];
+    cards?: Card[];
     total?: number;
     showTotal?: boolean;
     panelClass?: string;

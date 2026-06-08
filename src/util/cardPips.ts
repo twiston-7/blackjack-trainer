@@ -1,4 +1,5 @@
-import type { Rank, Suit } from '../types';
+import type { Rank } from '@app-types/Rank';
+import type { Suit } from '@app-types/Suit';
 
 export interface PipPosition {
     top: number;

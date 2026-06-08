@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
-import { createWebGLBackground } from '../logic/webglBackground';
-import './AppBackground.css';
+import { createWebGLBackground } from '@logic/webglBackground';
+import '@background/AppBackground.css';
 
 type BackgroundMode = 'webgl' | 'static';
 

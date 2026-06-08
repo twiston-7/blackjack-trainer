@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import type { RuleVariant } from './strategy';
-import AppBackground from './components/AppBackground';
-import Controls from './components/Controls';
-import FeedbackMessage from './components/FeedbackMessage';
-import HandPanel from './components/HandPanel';
-import SettingsModal from './components/SettingsModal';
-import { startNewRound } from './blackjack/core/gameEngine';
-import { useGameState } from './stores/gameState';
-import './App.css';
+import type { RuleVariant } from '@strategy';
+import AppBackground from '@background/AppBackground';
+import Controls from '@components/game/Controls';
+import FeedbackMessage from '@feedback/FeedbackMessage';
+import HandPanel from '@game/HandPanel';
+import SettingsModal from '@settings/SettingsModal';
+import { startNewRound } from '@core/gameEngine';
+import { useGameState } from '@stores/gameState';
+import '@components/App.css';
 
 export default function App() {
     const [selectedVariant, setSelectedVariant] = useState<RuleVariant>('s17');

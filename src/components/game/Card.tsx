@@ -1,6 +1,7 @@
-import type { Rank, Suit } from '../types';
-import { calculatePipPositions, getPipCount, getPipSizeForSuit } from '../utils/cardPips';
-import './Card.css';
+import type { Rank } from '@app-types/Rank';
+import type { Suit } from '@app-types/Suit';
+import { calculatePipPositions, getPipCount, getPipSizeForSuit } from '@util/cardPips';
+import '@game/Card.css';
 
 interface CardProps {
     suit?: Suit;

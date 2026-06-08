@@ -1,9 +1,9 @@
-import type { Card as CardType } from '../types';
-import Card from './Card';
-import './Hand.css';
+import type { Card } from '@app-types/CardType';
+import PlayingCard from '@game/Card';
+import '@game/Hand.css';
 
 interface HandProps {
-    cards?: CardType[];
+    cards?: Card[];
     showTotal?: boolean;
     total?: number;
 }
@@ -13,7 +13,7 @@ export default function Hand({ cards = [], showTotal = true, total = 0 }: HandPr
         <div className="hand">
             <div className="cards">
                 {cards.map((card, index) => (
-                    <Card key={`${card.suit}-${card.rank}-${index}`} suit={card.suit} rank={card.rank} faceDown={card.faceDown || false} />
+                    <PlayingCard key={`${card.suit}-${card.rank}-${index}`} suit={card.suit} rank={card.rank} faceDown={card.faceDown || false} />
                 ))}
             </div>
 

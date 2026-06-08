@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import type { RuleVariant } from '../strategy';
-import './SettingsModal.css';
+import type { RuleVariant } from '@strategy';
+import '@settings/SettingsModal.css';
 
 interface SettingsModalProps {
     isOpen: boolean;

@@ -1,5 +1,5 @@
 import { useSyncExternalStore } from 'react';
-import type { GameState } from '../types';
+import type { GameState } from '@app-types/GameState';
 
 const initialState: GameState = {
     dealerHand: [],

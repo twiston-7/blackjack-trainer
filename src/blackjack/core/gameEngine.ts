@@ -1,9 +1,10 @@
-import type { Action, Card } from '../../types';
-import type { RuleVariant } from '../../strategy';
-import { getGameState, setGameState } from '../../stores/gameState';
-import { createDeck, dealCard, shuffleDeck } from './deckManager';
-import { calculateHandValue, canDouble, canSplit } from './gameRules';
-import { getCorrectAction } from './strategyChecker';
+import type { Action } from '@app-types/Action';
+import type { Card } from '@app-types/CardType';
+import type { RuleVariant } from '@strategy/index';
+import { getGameState, setGameState } from '@stores/gameState';
+import { createDeck, dealCard, shuffleDeck } from '@core/deckManager';
+import { calculateHandValue, canDouble, canSplit } from '@core/gameRules';
+import { getCorrectAction } from '@core/strategyChecker';
 
 function createStartingHands(deck: Card[]) {
     let currentDeck = deck;

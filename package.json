@@ -5,19 +5,20 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && tsc",
     "preview": "vite preview",
     "check": "tsc -p tsconfig.app.json && tsc -p tsconfig.node.json"
   },
   "dependencies": {
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2",
+    "@app-types/node": "^24.10.0",
+    "@app-types/react": "^19.2.2",
+    "@app-types/react-dom": "^19.2.2",
     "@vitejs/plugin-react": "^5.1.0",
-    "@types/node": "^24.10.0",
     "typescript": "~5.9.3",
     "vite": "^7.2.2"
   }

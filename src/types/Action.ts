@@ -1,0 +1,1 @@
+export type Action = 'hit' | 'stand' | 'double' | 'split';

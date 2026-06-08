@@ -1,5 +1,5 @@
-import type { Card } from '../../types';
-import { getCardValue, normalizeRank } from './deckManager';
+import type { Card } from '@app-types/CardType';
+import { getCardValue, normalizeRank } from '@core/deckManager';
 
 export function calculateHandValue(cards: Card[]): number {
     let total = 0;

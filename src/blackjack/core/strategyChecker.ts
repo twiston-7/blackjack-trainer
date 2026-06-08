@@ -1,7 +1,8 @@
-import type { Action, Card } from '../../types';
-import { getStrategy, type RuleVariant } from '../../strategy';
-import { normalizeRank } from './deckManager';
-import { calculateHandValue, getDealerUpcardValue, getHandType } from './gameRules';
+import type { Action } from '@app-types/Action';
+import type { Card } from '@app-types/CardType';
+import { getStrategy, type RuleVariant } from '@strategy';
+import { normalizeRank } from '@core/deckManager';
+import { calculateHandValue, getDealerUpcardValue, getHandType } from '@core/gameRules';
 
 export function getCorrectAction(
     playerHand: Card[],

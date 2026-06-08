@@ -1,8 +1,8 @@
-import type { RuleVariant } from '../strategy';
-import type { Action } from '../types';
-import { getActionButtonState, startNewRound, submitPlayerAction } from '../blackjack/core/gameEngine';
-import { useGameState } from '../stores/gameState';
-import './Controls.css';
+import type { RuleVariant } from '@strategy';
+import type { Action } from '@app-types/Action';
+import { getActionButtonState, startNewRound, submitPlayerAction } from '@core/gameEngine';
+import { useGameState } from '@stores/gameState';
+import '@game/Controls.css';
 
 interface ControlsProps {
     selectedVariant: RuleVariant;

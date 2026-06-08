@@ -1,7 +1,7 @@
-import type { Action } from '../types';
-import s17Strategy from './s17-strategy.json';
-import h17Strategy from './h17-strategy.json';
-import enhcStrategy from './enhc-strategy.json';
+import type { Action } from '@app-types/Action';
+import s17Strategy from '@strategy/s17-strategy.json';
+import h17Strategy from '@strategy/h17-strategy.json';
+import enhcStrategy from '@strategy/enhc-strategy.json';
 
 export type RuleVariant = 's17' | 'h17' | 'enhc';
 
